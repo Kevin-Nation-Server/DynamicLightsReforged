@@ -14,7 +14,6 @@ import dev.lambdaurora.lambdynlights.accessor.DynamicLightHandlerHolder;
 import dev.lambdaurora.lambdynlights.api.DynamicLightHandler;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import org.jetbrains.annotations.Nullable;
@@ -45,7 +44,7 @@ public abstract class EntityTypeMixin<T extends Entity> implements DynamicLightH
 		var name = description;
 
 		if (name == null) {
-			return new TranslatableComponent("lambdynlights.dummy");
+			return Component.translatable("lambdynlights.dummy");
 		}
 		return name;
 	}

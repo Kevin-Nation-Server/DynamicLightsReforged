@@ -14,7 +14,6 @@ import dev.lambdaurora.lambdynlights.accessor.DynamicLightHandlerHolder;
 import dev.lambdaurora.lambdynlights.api.DynamicLightHandler;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import org.jetbrains.annotations.Nullable;
@@ -40,9 +39,10 @@ public class BlockEntityTypeMixin<T extends BlockEntity> implements DynamicLight
 	public Component lambdynlights$getName() {
 		var self = (BlockEntityType<?>) (Object) this;
 		var id = Registry.BLOCK_ENTITY_TYPE.getKey(self);
+		
 		if (id == null) {
-			return TextComponent.EMPTY;
+			return Component.translatable("");
 		}
-		return new TextComponent(id.getNamespace() + ':' + id.getPath());
+		return Component.translatable(id.getNamespace() + ':' + id.getPath());
 	}
 }
